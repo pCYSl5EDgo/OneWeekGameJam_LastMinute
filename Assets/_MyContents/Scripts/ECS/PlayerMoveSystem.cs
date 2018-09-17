@@ -10,7 +10,7 @@ namespace MainContents.ECS
     {
         struct Group
         {
-            public int Length;
+            public readonly int Length;
             public ComponentDataArray<Position> Position;
             public ComponentDataArray<PlayerInput> Input;
             [ReadOnly] public SharedComponentDataArray<PlayerSettings> PlayerSettings;
@@ -65,8 +65,8 @@ namespace MainContents.ECS
                             ShotAngle = 90,
                             Lifespan = playerSettings.ShootSettingsInstance.Lifespan
                         });
-                    PostUpdateCommands.AddSharedComponent(MainECS_Manager.PlayerBulletLook);
-                    PostUpdateCommands.AddSharedComponent(MainECS_Manager.BulletCollision);
+                    PostUpdateCommands.SetSharedComponent(MainECS_Manager.PlayerBulletLook);
+                    PostUpdateCommands.SetSharedComponent(MainECS_Manager.BulletCollision);
                 }
 
                 this._group.Position[i] = retPos;

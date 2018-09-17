@@ -14,7 +14,7 @@ namespace MainContents.ECS
         // 敵情報
         struct EnemyGroup
         {
-            public int Length;
+            public readonly int Length;
             [ReadOnly] public EntityArray Entities;
             [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public ComponentDataArray<EnemyData> Data;
@@ -24,7 +24,7 @@ namespace MainContents.ECS
         // プレイヤーの弾
         struct PlayerBulletGroup
         {
-            public int Length;
+            public readonly int Length;
             [ReadOnly] public EntityArray Entities;
             [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public ComponentDataArray<PlayerBullet> Identify;

@@ -62,7 +62,7 @@ namespace MainContents.DebugUtility
         // 自機情報
         struct PlayerGroup
         {
-            public int Length;
+            public readonly int Length;
             [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public ComponentDataArray<PlayerInput> Input;
             [ReadOnly] public SharedComponentDataArray<PlayerSettings> Settings;
@@ -71,7 +71,7 @@ namespace MainContents.DebugUtility
         // プレイヤーの弾
         struct PlayerBulletGroup
         {
-            public int Length;
+            public readonly int Length;
             [ReadOnly] public EntityArray Entities;
             [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public ComponentDataArray<PlayerBullet> Identify;
@@ -80,7 +80,7 @@ namespace MainContents.DebugUtility
         // 敵情報
         struct EnemyGroup
         {
-            public int Length;
+            public readonly int Length;
             [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public ComponentDataArray<EnemyData> Data;
         }
@@ -88,7 +88,7 @@ namespace MainContents.DebugUtility
         // 敵の弾
         struct EnemyBulletGroup
         {
-            public int Length;
+            public readonly int Length;
             [ReadOnly] public EntityArray Entities;
             [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public ComponentDataArray<EnemyBullet> Identify;

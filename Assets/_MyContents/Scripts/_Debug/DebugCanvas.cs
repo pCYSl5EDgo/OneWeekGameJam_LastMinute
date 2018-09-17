@@ -58,18 +58,18 @@ namespace MainContents.DebugUtility
                     {
                         this._entityManager.SetComponentData(entity, new Position { Value = new float3(pos.x, 0, pos.y) });
                         this._entityManager.SetComponentData(entity, new EnemyData { });
-                        this._entityManager.AddSharedComponentData(entity, MainECS_Manager.EnemyLook);
-                        this._entityManager.AddSharedComponentData(entity, MainECS_Manager.EnemyCollision);
-                        this._entityManager.AddSharedComponentData(entity, MainECS_Manager.BarrageSettings_CircularBullet);
+                        this._entityManager.SetSharedComponentData(entity, MainECS_Manager.EnemyLook);
+                        this._entityManager.SetSharedComponentData(entity, MainECS_Manager.EnemyCollision);
+                        this._entityManager.SetSharedComponentData(entity, MainECS_Manager.BarrageSettings_CircularBullet);
                     }
                     break;
                 case BarrageType.DirectionBullet:
                     {
                         this._entityManager.SetComponentData(entity, new Position { Value = new float3(pos.x, 0, pos.y) });
                         this._entityManager.SetComponentData(entity, new EnemyData { });
-                        this._entityManager.AddSharedComponentData(entity, MainECS_Manager.EnemyLook);
-                        this._entityManager.AddSharedComponentData(entity, MainECS_Manager.EnemyCollision);
-                        this._entityManager.AddSharedComponentData(entity, MainECS_Manager.BarrageSettings_DirectionBullet);
+                        this._entityManager.SetSharedComponentData(entity, MainECS_Manager.EnemyLook);
+                        this._entityManager.SetSharedComponentData(entity, MainECS_Manager.EnemyCollision);
+                        this._entityManager.SetSharedComponentData(entity, MainECS_Manager.BarrageSettings_DirectionBullet);
                     }
                     break;
             }
@@ -90,8 +90,8 @@ namespace MainContents.DebugUtility
                     ShotAngle = data.Angle,
                     Lifespan = data.Lifespan
                 });
-            this._entityManager.AddSharedComponentData(entity, MainECS_Manager.EnemyBulletLook);
-            this._entityManager.AddSharedComponentData(entity, MainECS_Manager.BulletCollision);
+            this._entityManager.SetSharedComponentData(entity, MainECS_Manager.EnemyBulletLook);
+            this._entityManager.SetSharedComponentData(entity, MainECS_Manager.BulletCollision);
         }
 
 #endif

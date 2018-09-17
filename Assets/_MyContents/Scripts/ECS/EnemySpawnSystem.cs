@@ -15,7 +15,7 @@ namespace MainContents.ECS
     {
         struct Group
         {
-            public int Length;
+            public readonly int Length;
             public ComponentDataArray<EnemySpawnSystemData> Data;
             [ReadOnly] public SharedComponentDataArray<EnemySpawnSystemSettings> Settings;
         }
@@ -45,23 +45,20 @@ namespace MainContents.ECS
             var type = UnityEngine.Random.Range(0, spawnSettings.MaxBarrageType);
             var pos = spawnSettings.RandomArea();
 
-            PostUpdateCommands.CreateEntity(MainECS_Manager.CommonEnemyArchetype);
-            PostUpdateCommands.SetComponent(new Position { Value = new float3(pos.x, 0, pos.y) });
-            PostUpdateCommands.SetComponent(new EnemyData { });
-            PostUpdateCommands.AddSharedComponent(MainECS_Manager.EnemyLook);
-            PostUpdateCommands.AddSharedComponent(MainECS_Manager.EnemyCollision);
+            var postUpdateCommands = PostUpdateCommands;
+            postUpdateCommands.CreateEntity(MainECS_Manager.CommonEnemyArchetype);
+            postUpdateCommands.SetComponent(new Position { Value = new float3(pos.x, 0, pos.y) });
+            postUpdateCommands.SetComponent(new EnemyData { });
+            postUpdateCommands.SetSharedComponent(MainECS_Manager.EnemyLook);
+            postUpdateCommands.SetSharedComponent(MainECS_Manager.EnemyCollision);
 
             switch ((BarrageType)type)
             {
                 case BarrageType.CircularBullet:
-                    {
-                        PostUpdateCommands.AddSharedComponent(MainECS_Manager.BarrageSettings_CircularBullet);
-                    }
+                    postUpdateCommands.AddSharedComponent(MainECS_Manager.BarrageSettings_CircularBullet);
                     break;
                 case BarrageType.DirectionBullet:
-                    {
-                        PostUpdateCommands.AddSharedComponent(MainECS_Manager.BarrageSettings_DirectionBullet);
-                    }
+                    postUpdateCommands.AddSharedComponent(MainECS_Manager.BarrageSettings_DirectionBullet);
                     break;
             }
         }

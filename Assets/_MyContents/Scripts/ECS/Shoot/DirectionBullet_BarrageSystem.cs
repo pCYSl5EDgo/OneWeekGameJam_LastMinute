@@ -10,7 +10,7 @@ namespace MainContents.ECS
     {
         struct Group
         {
-            public int Length;
+            public readonly int Length;
             public ComponentDataArray<EnemyData> EnemyData;
             [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public SharedComponentDataArray<BarrageSettings_DirectionBullet> Settings;
@@ -18,7 +18,7 @@ namespace MainContents.ECS
 
         struct PlayerGroup
         {
-            public int Length;
+            public readonly int Length;
             [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public ComponentDataArray<PlayerInput> Input;
             [ReadOnly] public SharedComponentDataArray<PlayerSettings> Settings;
@@ -59,8 +59,8 @@ namespace MainContents.ECS
                     ShotAngle = this.Aiming(pos.Value, this._playerGroup.Position[0].Value),
                     Lifespan = settings.CommonBarrageSettings.Lifespan
                 });
-            PostUpdateCommands.AddSharedComponent(MainECS_Manager.EnemyBulletLook);
-            PostUpdateCommands.AddSharedComponent(MainECS_Manager.BulletCollision);
+            PostUpdateCommands.SetSharedComponent(MainECS_Manager.EnemyBulletLook);
+            PostUpdateCommands.SetSharedComponent(MainECS_Manager.BulletCollision);
         }
 
         float Aiming(float3 p1, float3 p2)

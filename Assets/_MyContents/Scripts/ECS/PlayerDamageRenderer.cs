@@ -10,7 +10,7 @@ namespace MainContents.ECS
     {
         struct Group
         {
-            public int Length;
+            public readonly int Length;
             public ComponentDataArray<PlayerLife> Life;
             [ReadOnly] public SharedComponentDataArray<MeshInstanceRenderer> Renderer;
             [ReadOnly] public SharedComponentDataArray<PlayerColor> Colors;

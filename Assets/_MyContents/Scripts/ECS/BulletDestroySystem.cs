@@ -10,7 +10,7 @@ namespace MainContents.ECS
     {
         struct Group
         {
-            public int Length;
+            public readonly int Length;
             public EntityArray Entities;
             public ComponentDataArray<BulletData> BulletData;
         }

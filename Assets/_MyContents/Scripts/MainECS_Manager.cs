@@ -364,7 +364,7 @@ namespace MainContents.ECS
                 this._entityManager.SetComponentData(enemySpawnEntity, new EnemySpawnSystemData());
                 // 弾幕の種類数のみ動的に取得する都合上、インスタンスをコピーして手動で渡していく
                 var settings = this._gameSettings.EnemySpawnSystemSettingsInstance;
-                this._entityManager.AddSharedComponentData(
+                this._entityManager.SetSharedComponentData(
                     enemySpawnEntity,
                     new EnemySpawnSystemSettings
                     {
@@ -388,13 +388,13 @@ namespace MainContents.ECS
                         Max = playerSettings.LifeSettingsInstance.MaxLife
                     });
 
-                this._entityManager.AddSharedComponentData(this._playerEntity, PlayerLook);
-                this._entityManager.AddSharedComponentData(this._playerEntity, this._gameSettings.PlayerSettingsInstance);
-                this._entityManager.AddSharedComponentData(this._playerEntity, PlayerCollision);
+                this._entityManager.SetSharedComponentData(this._playerEntity, PlayerLook);
+                this._entityManager.SetSharedComponentData(this._playerEntity, this._gameSettings.PlayerSettingsInstance);
+                this._entityManager.SetSharedComponentData(this._playerEntity, PlayerCollision);
                 var colorSettings = this._gameSettings.PlayerColorSettingsInstance;
                 var nColor = colorSettings.PlayerNormalColor;
                 var dColor = colorSettings.PlayerDamagedColor;
-                this._entityManager.AddSharedComponentData(this._playerEntity,
+                this._entityManager.SetSharedComponentData(this._playerEntity,
                     new PlayerColor
                     {
                         NormalColor = new float4(nColor.r, nColor.g, nColor.b, nColor.a),

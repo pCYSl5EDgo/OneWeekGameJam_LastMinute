@@ -9,7 +9,7 @@ namespace MainContents.ECS
     {
         struct Group
         {
-            public int Length;
+            public readonly int Length;
             public ComponentDataArray<EnemyData> EnemyData;
             [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public SharedComponentDataArray<BarrageSettings_CircularBullet> Settings;
@@ -49,8 +49,8 @@ namespace MainContents.ECS
                         ShotAngle = (i / (float)settings.BulletCount) * 360f,
                         Lifespan = settings.CommonBarrageSettings.Lifespan
                     });
-                PostUpdateCommands.AddSharedComponent(MainECS_Manager.EnemyBulletLook);
-                PostUpdateCommands.AddSharedComponent(MainECS_Manager.BulletCollision);
+                PostUpdateCommands.SetSharedComponent(MainECS_Manager.EnemyBulletLook);
+                PostUpdateCommands.SetSharedComponent(MainECS_Manager.BulletCollision);
             }
         }
     }

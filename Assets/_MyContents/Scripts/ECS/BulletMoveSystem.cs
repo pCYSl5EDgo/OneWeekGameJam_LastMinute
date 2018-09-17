@@ -14,7 +14,7 @@ namespace MainContents.ECS
         // 弾の移動に必要なデータ
         struct Group
         {
-            public int Length;
+            public readonly int Length;
             public ComponentDataArray<Position> Position;
             [ReadOnly] public ComponentDataArray<BulletData> BulletData;
         }

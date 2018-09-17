@@ -10,7 +10,7 @@ namespace MainContents.ECS
     {
         struct Group
         {
-            public int Length;
+            public readonly int Length;
             public ComponentDataArray<PlayerInput> Input;
             public ComponentDataArray<PlayerLife> Life;
             [ReadOnly] public SharedComponentDataArray<PlayerSettings> PlayerSettings;
