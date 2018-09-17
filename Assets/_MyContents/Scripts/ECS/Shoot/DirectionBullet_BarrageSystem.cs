@@ -1,5 +1,5 @@
 ﻿using Unity.Entities;
-using Unity.Transforms2D;
+using Unity.Transforms;
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
@@ -12,14 +12,14 @@ namespace MainContents.ECS
         {
             public int Length;
             public ComponentDataArray<EnemyData> EnemyData;
-            [ReadOnly] public ComponentDataArray<Position2D> Position;
+            [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public SharedComponentDataArray<BarrageSettings_DirectionBullet> Settings;
         }
 
         struct PlayerGroup
         {
             public int Length;
-            [ReadOnly] public ComponentDataArray<Position2D> Position;
+            [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public ComponentDataArray<PlayerInput> Input;
             [ReadOnly] public SharedComponentDataArray<PlayerSettings> Settings;
         }
@@ -46,7 +46,7 @@ namespace MainContents.ECS
         }
 
         // 敵の生成
-        void SpawnBullet(ref Position2D pos, ref BarrageSettings_DirectionBullet settings)
+        void SpawnBullet(ref Position pos, ref BarrageSettings_DirectionBullet settings)
         {
             if (this._playerGroup.Position.Length <= 0) { return; }
 

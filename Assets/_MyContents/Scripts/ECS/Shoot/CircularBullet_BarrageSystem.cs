@@ -1,5 +1,5 @@
 ﻿using Unity.Entities;
-using Unity.Transforms2D;
+using Unity.Transforms;
 using Unity.Collections;
 using UnityEngine;
 
@@ -11,7 +11,7 @@ namespace MainContents.ECS
         {
             public int Length;
             public ComponentDataArray<EnemyData> EnemyData;
-            [ReadOnly] public ComponentDataArray<Position2D> Position;
+            [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public SharedComponentDataArray<BarrageSettings_CircularBullet> Settings;
         }
 
@@ -36,7 +36,7 @@ namespace MainContents.ECS
         }
 
         // 敵の生成
-        void SpawnBullet(ref Position2D pos, ref BarrageSettings_CircularBullet settings)
+        void SpawnBullet(ref Position pos, ref BarrageSettings_CircularBullet settings)
         {
             for (int i = 0; i < settings.BulletCount; ++i)
             {

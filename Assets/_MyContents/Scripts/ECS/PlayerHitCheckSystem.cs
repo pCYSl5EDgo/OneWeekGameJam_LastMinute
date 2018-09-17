@@ -1,5 +1,5 @@
 ﻿using Unity.Entities;
-using Unity.Transforms2D;
+using Unity.Transforms;
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
@@ -16,7 +16,7 @@ namespace MainContents.ECS
         {
             public int Length;
             [ReadOnly] public EntityArray Entities;
-            [ReadOnly] public ComponentDataArray<Position2D> Position;
+            [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public ComponentDataArray<EnemyBullet> Identify;
             [ReadOnly] public SharedComponentDataArray<BulletCollision> Collision;
         }
@@ -27,7 +27,7 @@ namespace MainContents.ECS
             public int Length;
             public ComponentDataArray<PlayerLife> Life;
             [ReadOnly] public EntityArray Entities;
-            [ReadOnly] public ComponentDataArray<Position2D> Position;
+            [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public ComponentDataArray<PlayerInput> Input;
             [ReadOnly] public SharedComponentDataArray<PlayerSettings> PlayerSettings;
             [ReadOnly] public SharedComponentDataArray<PlayerCollision> Collision;

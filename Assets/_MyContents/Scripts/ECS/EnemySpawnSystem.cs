@@ -1,5 +1,4 @@
 ﻿using Unity.Entities;
-using Unity.Transforms2D;
 using Unity.Mathematics;
 using Unity.Collections;
 using UnityEngine;
@@ -46,7 +45,7 @@ namespace MainContents.ECS
             var pos = spawnSettings.RandomArea();
 
             PostUpdateCommands.CreateEntity(MainECS_Manager.CommonEnemyArchetype);
-            PostUpdateCommands.SetComponent(new Position2D { Value = pos });
+            PostUpdateCommands.SetComponent(new Position { Value = pos });
             PostUpdateCommands.SetComponent(new EnemyData { });
             PostUpdateCommands.AddSharedComponent(MainECS_Manager.EnemyLook);
             PostUpdateCommands.AddSharedComponent(MainECS_Manager.EnemyCollision);

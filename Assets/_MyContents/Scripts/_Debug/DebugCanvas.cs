@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 
 using Unity.Entities;
-using Unity.Transforms2D;
 using Unity.Mathematics;
 
 using MainContents.ECS;
@@ -56,7 +55,7 @@ namespace MainContents.DebugUtility
             {
                 case BarrageType.CircularBullet:
                     {
-                        this._entityManager.SetComponentData(entity, new Position2D { Value = pos });
+                        this._entityManager.SetComponentData(entity, new Position { Value = pos });
                         this._entityManager.SetComponentData(entity, new EnemyData { });
                         this._entityManager.AddSharedComponentData(entity, MainECS_Manager.EnemyLook);
                         this._entityManager.AddSharedComponentData(entity, MainECS_Manager.EnemyCollision);
@@ -65,7 +64,7 @@ namespace MainContents.DebugUtility
                     break;
                 case BarrageType.DirectionBullet:
                     {
-                        this._entityManager.SetComponentData(entity, new Position2D { Value = pos });
+                        this._entityManager.SetComponentData(entity, new Position { Value = pos });
                         this._entityManager.SetComponentData(entity, new EnemyData { });
                         this._entityManager.AddSharedComponentData(entity, MainECS_Manager.EnemyLook);
                         this._entityManager.AddSharedComponentData(entity, MainECS_Manager.EnemyCollision);
@@ -81,7 +80,7 @@ namespace MainContents.DebugUtility
 
             var data = this._debugSettings.SpawnBulletDataInstance;
             this._entityManager.SetComponentData(
-                entity, new Position2D { Value = data.CreatePosition });
+                entity, new Position { Value = data.CreatePosition });
 
             this._entityManager.SetComponentData(
                 entity, new BulletData

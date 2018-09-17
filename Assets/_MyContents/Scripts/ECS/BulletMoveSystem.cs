@@ -1,6 +1,5 @@
 ﻿using Unity.Entities;
 using Unity.Mathematics;
-using Unity.Transforms2D;
 using Unity.Collections;
 using UnityEngine;
 
@@ -15,7 +14,7 @@ namespace MainContents.ECS
         struct Group
         {
             public int Length;
-            public ComponentDataArray<Position2D> Position;
+            public ComponentDataArray<Position> Position;
             [ReadOnly] public ComponentDataArray<BulletData> BulletData;
         }
 

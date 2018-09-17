@@ -1,5 +1,4 @@
 ﻿using Unity.Entities;
-using Unity.Transforms2D;
 using Unity.Collections;
 using Unity.Mathematics;
 using Unity.Rendering;

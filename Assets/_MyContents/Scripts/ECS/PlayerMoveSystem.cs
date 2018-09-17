@@ -1,5 +1,5 @@
 ﻿using Unity.Entities;
-using Unity.Transforms2D;
+using Unity.Transforms;
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;
@@ -11,7 +11,7 @@ namespace MainContents.ECS
         struct Group
         {
             public int Length;
-            public ComponentDataArray<Position2D> Position;
+            public ComponentDataArray<Position> Position;
             public ComponentDataArray<PlayerInput> Input;
             [ReadOnly] public SharedComponentDataArray<PlayerSettings> PlayerSettings;
         }
@@ -50,7 +50,7 @@ namespace MainContents.ECS
                 }
 
 
-                var retPos = new Position2D { Value = pos };
+                var retPos = new Position { Value = pos };
                 if (input.Fire == 1)
                 {
                     input.FireCooldown = playerSettings.ShootSettingsInstance.FireCooldown;

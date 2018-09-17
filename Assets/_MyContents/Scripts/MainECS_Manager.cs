@@ -12,7 +12,7 @@ using UnityEngine.UI;
 using Unity.Entities;
 using Unity.Rendering;
 using Unity.Transforms;
-using Unity.Transforms2D;
+using Unity.Transforms;
 using Unity.Mathematics;
 using Unity.Collections;
 
@@ -259,7 +259,7 @@ namespace MainContents.ECS
 
             // Archetypes Settings
             PlayerArchetype = this._entityManager.CreateArchetype(
-                typeof(Position2D),
+                typeof(Position),
                 typeof(PlayerInput),
                 typeof(PlayerLife),
                 typeof(TransformMatrix));
@@ -270,7 +270,7 @@ namespace MainContents.ECS
             // - PlayerColor
 
             EnemyBulletArchetype = this._entityManager.CreateArchetype(
-                typeof(Position2D),
+                typeof(Position),
                 typeof(BulletData),
                 typeof(EnemyBullet),
                 typeof(TransformMatrix));
@@ -279,7 +279,7 @@ namespace MainContents.ECS
             // - BulletCollision
 
             PlayerBulletArchetype = this._entityManager.CreateArchetype(
-                typeof(Position2D),
+                typeof(Position),
                 typeof(BulletData),
                 typeof(PlayerBullet),
                 typeof(TransformMatrix));
@@ -293,7 +293,7 @@ namespace MainContents.ECS
             // - EnemySpawnSystemSettings
 
             CommonEnemyArchetype = this._entityManager.CreateArchetype(
-                typeof(Position2D),
+                typeof(Position),
                 typeof(EnemyData),
                 typeof(TransformMatrix));
             // ▼ SharedComponentData
@@ -387,7 +387,7 @@ namespace MainContents.ECS
             {
                 var playerSettings = this._gameSettings.PlayerSettingsInstance;
                 this._playerEntity = this._entityManager.CreateEntity(PlayerArchetype);
-                this._entityManager.SetComponentData(this._playerEntity, new Position2D { Value = this._gameSettings.PlayerCreatePosition });
+                this._entityManager.SetComponentData(this._playerEntity, new Position { Value = this._gameSettings.PlayerCreatePosition });
                 this._entityManager.SetComponentData(this._playerEntity, new PlayerInput());
                 this._entityManager.SetComponentData(this._playerEntity, new TransformMatrix());
                 this._entityManager.SetComponentData(this._playerEntity,

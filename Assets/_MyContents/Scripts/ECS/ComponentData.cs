@@ -1,6 +1,5 @@
 ﻿using Unity.Entities;
 using Unity.Mathematics;
-using Unity.Transforms2D;
 
 namespace MainContents.ECS
 {

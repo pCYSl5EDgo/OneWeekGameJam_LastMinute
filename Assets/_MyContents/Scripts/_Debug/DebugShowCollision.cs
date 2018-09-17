@@ -1,6 +1,5 @@
 ﻿#if ENABLE_DEBUG && UNITY_EDITOR
 using Unity.Entities;
-using Unity.Transforms2D;
 using Unity.Collections;
 using UnityEngine;
 
@@ -63,7 +62,7 @@ namespace MainContents.DebugUtility
         struct PlayerGroup
         {
             public int Length;
-            [ReadOnly] public ComponentDataArray<Position2D> Position;
+            [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public ComponentDataArray<PlayerInput> Input;
             [ReadOnly] public SharedComponentDataArray<PlayerSettings> Settings;
         }
@@ -73,7 +72,7 @@ namespace MainContents.DebugUtility
         {
             public int Length;
             [ReadOnly] public EntityArray Entities;
-            [ReadOnly] public ComponentDataArray<Position2D> Position;
+            [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public ComponentDataArray<PlayerBullet> Identify;
         }
 
@@ -81,7 +80,7 @@ namespace MainContents.DebugUtility
         struct EnemyGroup
         {
             public int Length;
-            [ReadOnly] public ComponentDataArray<Position2D> Position;
+            [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public ComponentDataArray<EnemyData> Data;
         }
 
@@ -90,7 +89,7 @@ namespace MainContents.DebugUtility
         {
             public int Length;
             [ReadOnly] public EntityArray Entities;
-            [ReadOnly] public ComponentDataArray<Position2D> Position;
+            [ReadOnly] public ComponentDataArray<Position> Position;
             [ReadOnly] public ComponentDataArray<EnemyBullet> Identify;
         }
 
