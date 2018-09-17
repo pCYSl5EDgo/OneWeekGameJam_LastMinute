@@ -63,10 +63,10 @@ namespace MainContents.ECS
             PostUpdateCommands.AddSharedComponent(MainECS_Manager.BulletCollision);
         }
 
-        float Aiming(float2 p1, float2 p2)
+        float Aiming(float3 p1, float3 p2)
         {
             float dx = p2.x - p1.x;
-            float dy = p2.y - p1.y;
+            float dy = p2.z - p1.z;
             float rad = math.atan2(dy, dx);
             return math.degrees(rad);
         }

@@ -1,6 +1,7 @@
 ﻿using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Collections;
+using Unity.Transforms;
 using UnityEngine;
 
 namespace MainContents.ECS
@@ -27,10 +28,10 @@ namespace MainContents.ECS
             {
                 var data = this._group.BulletData[i];
 
-                float2 tmp = new float2(0f, 0f);
+                float3 tmp = default;
                 float angle = math.radians(data.ShotAngle);
                 tmp.x = math.cos(angle);
-                tmp.y = math.sin(angle);
+                tmp.z = math.sin(angle);
 
                 var pos = this._group.Position[i];
                 pos.Value += (tmp * data.ShotSpeed * deltaTime);

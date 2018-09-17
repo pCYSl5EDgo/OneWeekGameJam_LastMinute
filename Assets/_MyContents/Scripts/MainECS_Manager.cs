@@ -259,46 +259,38 @@ namespace MainContents.ECS
 
             // Archetypes Settings
             PlayerArchetype = this._entityManager.CreateArchetype(
-                typeof(Position),
-                typeof(PlayerInput),
-                typeof(PlayerLife),
-                typeof(TransformMatrix));
-            // ▼ SharedComponentData      ※SharedComponentDataはArchetypeに登録出来ないので使用される物をメモ
-            // - MeshInstanceRenderer
-            // - PlayerSettings
-            // - PlayerCollision
-            // - PlayerColor
+                ComponentType.Create<Position>(),
+                ComponentType.Create<PlayerInput>(),
+                ComponentType.Create<PlayerLife>(),
+                ComponentType.Create<MeshInstanceRenderer>(),
+                ComponentType.Create<PlayerSettings>(),
+                ComponentType.Create<PlayerCollision>(),
+                ComponentType.Create<PlayerColor>());
 
             EnemyBulletArchetype = this._entityManager.CreateArchetype(
-                typeof(Position),
-                typeof(BulletData),
-                typeof(EnemyBullet),
-                typeof(TransformMatrix));
-            // ▼ SharedComponentData
-            // - MeshInstanceRenderer
-            // - BulletCollision
+                ComponentType.Create<Position>(),
+                ComponentType.Create<BulletData>(),
+                ComponentType.Create<EnemyBullet>(),
+                ComponentType.Create<MeshInstanceRenderer>(),
+                ComponentType.Create<BulletCollision>());
 
             PlayerBulletArchetype = this._entityManager.CreateArchetype(
-                typeof(Position),
-                typeof(BulletData),
-                typeof(PlayerBullet),
-                typeof(TransformMatrix));
-            // ▼ SharedComponentData
-            // - MeshInstanceRenderer
-            // - BulletCollision
+                ComponentType.Create<Position>(),
+                ComponentType.Create<BulletData>(),
+                ComponentType.Create<PlayerBullet>(),
+                ComponentType.Create<MeshInstanceRenderer>(),
+                ComponentType.Create<BulletCollision>());
 
             EnemySpawnSystemArchetype = this._entityManager.CreateArchetype(
-                typeof(EnemySpawnSystemData));
-            // ▼ SharedComponentData
-            // - EnemySpawnSystemSettings
+                ComponentType.Create<EnemySpawnSystemData>(),
+                ComponentType.Create<EnemySpawnSystemSettings>());
 
             CommonEnemyArchetype = this._entityManager.CreateArchetype(
-                typeof(Position),
-                typeof(EnemyData),
-                typeof(TransformMatrix));
+                ComponentType.Create<Position>(),
+                ComponentType.Create<EnemyData>(),
+                ComponentType.Create<MeshInstanceRenderer>(),
+                ComponentType.Create<EnemyCollision>());
             // ▼ SharedComponentData
-            // - MeshInstanceRenderer
-            // - EnemyCollision
             // - [BarrageSettings_DirectionBullet] or [BarrageSettings_CircularBullet]
             //      →こちらについて、登録するSharedComponentDataによって敵が撃ってくる弾幕が変わる。どちらか片方しか登録されない想定。
 
@@ -387,9 +379,8 @@ namespace MainContents.ECS
             {
                 var playerSettings = this._gameSettings.PlayerSettingsInstance;
                 this._playerEntity = this._entityManager.CreateEntity(PlayerArchetype);
-                this._entityManager.SetComponentData(this._playerEntity, new Position { Value = this._gameSettings.PlayerCreatePosition });
+                this._entityManager.SetComponentData(this._playerEntity, new Position { Value = new float3(this._gameSettings.PlayerCreatePosition.x, 0, this._gameSettings.PlayerCreatePosition.y) });
                 this._entityManager.SetComponentData(this._playerEntity, new PlayerInput());
-                this._entityManager.SetComponentData(this._playerEntity, new TransformMatrix());
                 this._entityManager.SetComponentData(this._playerEntity,
                     new PlayerLife
                     {

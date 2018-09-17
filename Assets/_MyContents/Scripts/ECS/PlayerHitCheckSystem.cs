@@ -49,11 +49,10 @@ namespace MainContents.ECS
 
             for (int i = 0; i < this._enemyBulletGroup.Length; ++i)
             {
-                float2 bulletPos = this._enemyBulletGroup.Position[i].Value;
+                var bulletPos = this._enemyBulletGroup.Position[i].Value;
                 float bRadius = this._enemyBulletGroup.Collision[i].Radius;
 
-                if (math.pow((playerPos.x - bulletPos.x), 2) + math.pow((playerPos.y - bulletPos.y), 2)
-                    <= math.pow((pRadius + bRadius), 2))
+                if (math.pow((playerPos.x - bulletPos.x), 2) + math.pow((playerPos.z - bulletPos.z), 2) <= math.pow((pRadius + bRadius), 2))
                 {
                     PostUpdateCommands.DestroyEntity(this._enemyBulletGroup.Entities[i]);
 

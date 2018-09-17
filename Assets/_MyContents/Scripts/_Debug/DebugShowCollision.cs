@@ -1,6 +1,7 @@
 ﻿#if ENABLE_DEBUG && UNITY_EDITOR
 using Unity.Entities;
 using Unity.Collections;
+using Unity.Transforms;
 using UnityEngine;
 
 using System.Collections.Generic;

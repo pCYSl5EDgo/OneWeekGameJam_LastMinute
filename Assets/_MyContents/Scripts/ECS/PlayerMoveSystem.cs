@@ -29,22 +29,22 @@ namespace MainContents.ECS
                 var input = this._group.Input[i];
 
                 var movable = playerSettings.MovableAreaInstance;
-                pos = new float2(MainECS_Manager.WorldMousePosision.x, MainECS_Manager.WorldMousePosision.z);
+                pos = new float3(MainECS_Manager.WorldMousePosision.x, 0, MainECS_Manager.WorldMousePosision.z);
 
-                if(pos.x <= movable.xMin)
+                if (pos.x <= movable.xMin)
                 {
                     pos.x = movable.xMin;
                 }
-                else if(pos.x > movable.xMax)
+                else if (pos.x > movable.xMax)
                 {
                     pos.x = movable.xMax;
                 }
 
-                if(pos.y <= movable.yMin)
+                if (pos.y <= movable.yMin)
                 {
                     pos.y = movable.yMin;
                 }
-                else if(pos.y > movable.yMax)
+                else if (pos.y > movable.yMax)
                 {
                     pos.y = movable.yMax;
                 }
